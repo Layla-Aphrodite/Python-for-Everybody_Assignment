@@ -1,0 +1,24 @@
+name = input("Enter file:")
+handle = open(name)
+lst=list()
+email=dict()
+
+for line in handle:
+    if not line.startswith('From:'):  #Must differentiate 'From' and 'From:'
+        continue 
+    line=line.rstrip().split()
+    lst.append(line[1])
+    
+for w in lst:
+    email[w]=email.get(w,0)+1
+           
+#find the word with the largest count
+largest=None
+bigword=None
+for key, value in email.items():
+    if largest==None or value>largest:
+        largest=value
+        bigword=key
+        
+print(bigword,largest)
+    
