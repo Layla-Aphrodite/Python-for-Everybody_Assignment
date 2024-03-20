@@ -1,1 +1,17 @@
+from pathlib import Path
+path=Path('/Users/moer/Desktop/python_work/Assignment_data.txt')
+contents=path.read_text()
+file=open('/Users/moer/Desktop/python_work/Assignment_data.txt')
+total=0
+numbers=list()
+import re
 
+for line in file:
+    line=line.rstrip()
+    number=re.findall('[0-9]+',line)
+    numbers=numbers+number
+
+for n in numbers:
+    total=total+int(n)    
+
+print(total)
